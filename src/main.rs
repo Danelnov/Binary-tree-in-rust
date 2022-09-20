@@ -23,6 +23,16 @@ impl Node {
         }
     }
 
+    fn new_from_vector(vector: &Vec<i32>) -> Node {
+        let mut root = Node::new(vector[0]);
+
+        for i in &vector[1..vector.len()] {
+            root.insert(*i);
+        }
+
+        root
+    }
+
     /// Insert a new node in the treeInserts a new node depending on the
     /// value of the parent, if the value of the new node is less than
     /// the parent the node will be entered on the left, if it is greater
@@ -128,13 +138,7 @@ fn main() {
         \
          7
     */
-    let mut root = Node::new(13);
-    root.insert(11);
-    root.insert(5);
-    root.insert(7);
-    root.insert(17);
-    root.insert(16);
-    root.insert(20);
+    let root = Node::new_from_vector(&vec![13, 11, 17, 5, 16, 20, 7]);
     println!("{:?}", root.search(7));
     println!("{:?}", root.sort_elements());
 }
